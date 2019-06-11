@@ -49,7 +49,11 @@
 					"label": "Origin",
 					"value": "Chat",
 					"displayToAgent": true
-			}];
+				},{
+					"label":"Email", 
+					"transcriptFields":["Email__c"]
+				}
+			];
 			
 			//Filtro agregado para buscar cliente por email
 			embedded_svc.settings.extraPrechatInfo = [
@@ -77,14 +81,6 @@
 						"label": "Email"
 					}]
 				},
-				{
-					"entityName": "LiveChatTranscript",
-					"showOnCreate": true,
-					"saveToTranscript": "Email__c",
-					"entityFieldMaps": [{
-						"label": "Email"
-					}]
-			    	},
 				{
 					"entityName": "Case",
 					"showOnCreate": true,
