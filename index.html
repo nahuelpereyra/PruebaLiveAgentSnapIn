@@ -38,25 +38,28 @@
 			//embedded_svc.settings.fallbackRouting = []; //Una matriz de identificadores de botones, de usuario o userId_buttonId
 			//embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Toma como valor predeterminado la opción Contacto)
       
-      //-------------------------------------------------
-      
+      //------------------------------------------------------------------------------------------------------------------------------------
 			
 			embedded_svc.settings.extraPrechatFormDetails = [{
-		  			"label": "Empresa",
+		  			//Valor para setear en el Caso
+					"label": "Empresa",
 		  			"value": "Rapsodia",
 		  			"displayToAgent": true
 				}, {
+					//Valor para setear en el Caso
 					"label": "Origin",
 					"value": "Chat",
 					"displayToAgent": true
 				},{
+					/*Valor para buscar Contacto y 
+					relacionarlo al chat*/
 					"label":"Email", 
 					"transcriptFields":["Email__c"]
 				}
 			];
 			
-			//Filtro agregado para buscar cliente por email
 			embedded_svc.settings.extraPrechatInfo = [
+				//Se setea para que no cree un nuevo Contacto
 				{
 					"entityName": "Contact",
 					"showOnCreate": true,
@@ -81,6 +84,8 @@
 						"label": "Email"
 					}]
 				},
+				/*Se setea para que cree un nuevo Caso
+				con el Origen y la Empresa cargados*/
 				{
 					"entityName": "Case",
 					"showOnCreate": true,
@@ -112,7 +117,7 @@
 					}]
 				}
 			];
-      //-----------------------------------------------------
+      //------------------------------------------------------------------------------------------------------------------------------------
       
 			embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 			embedded_svc.settings.entryFeature = 'LiveAgent';
