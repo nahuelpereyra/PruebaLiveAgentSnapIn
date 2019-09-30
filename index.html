@@ -39,7 +39,7 @@
 			//embedded_svc.settings.fallbackRouting = []; //Una matriz de identificadores de botones, de usuario o userId_buttonId
 			//embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Toma como valor predeterminado la opción Contacto)
       
-      //------------------------------------------------------------------------------------------------------------------------------------
+      //==================================================================================================================
 			
 			embedded_svc.settings.extraPrechatFormDetails = [{
 		  			//Valor para setear en el Caso
@@ -118,12 +118,12 @@
 					}]
 				}
 			];
-      //------------------------------------------------------------------------------------------------------------------------------------
+      //==================================================================================================================
       
 			embedded_svc.settings.enabledFeatures = ['LiveAgent'];
 			embedded_svc.settings.entryFeature = 'LiveAgent';
 			embedded_svc.init(
-				'https://rapsodia--devProy.cs4.my.salesforce.com',
+				'https://rapsodia-/**/-devProy.cs4.my.salesforce.com',
 				'https://devproy-rapsodia.cs4.force.com/tiendas',
 				gslbBaseURL,
 				'00DP0000000Dhn3',
@@ -140,7 +140,7 @@
 		};
 		if (!window.embedded_svc) {
 			var s = document.createElement('script');
-			s.setAttribute('src', 'https://rapsodia--devProy.cs4.my.salesforce.com/embeddedservice/5.0/esw.min.js');
+			s.setAttribute('src', 'https://rapsodia-/**/-devProy.cs4.my.salesforce.com/embeddedservice/5.0/esw.min.js');
 			s.onload = function() {
 				initESW(null);
 			};
