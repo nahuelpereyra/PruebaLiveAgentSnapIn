@@ -180,6 +180,8 @@
 		liveagent.findOrCreate("Case").map("Origin", "CaseOrigin", false, false,true);
 		//Automatically create a case
 		liveagent.findOrCreate("Case").showOnCreate();
+		//Attach the chat transcript to the case
+		liveagent.findOrCreate("Case").saveToTranscript("CaseId");
 	</script>	
 </body>
 </html>
