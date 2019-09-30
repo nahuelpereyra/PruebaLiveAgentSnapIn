@@ -149,9 +149,12 @@
 			initESW('https://service.force.com');
 		}
 	</script> -->
-	<button>
-		<a id="liveagent_button_online_5731I0000005SIm" href="javascript://Chat" onclick="liveagent.startChat('5731I0000005SIm')">Iniciar Chat!</a>
-	</button>
+	<script type='text/javascript' src='https://c.la1-c2cs-ia2.salesforceliveagent.com/content/g/js/47.0/deployment.js'></script>
+	<script type='text/javascript'>
+		liveagent.init('https://d.la1-c2cs-ia2.salesforceliveagent.com/chat', '5721I0000005VNT', '00DP0000000Dhn3');
+	</script>
+	
+	<a id="liveagent_button_online_5731I0000005SIm" href="javascript://Chat" onclick="liveagent.startChat('5731I0000005SIm')">Iniciar Chat!</a>
 	<div id="liveagent_button_offline_5731I0000005SIm" style="display: none;"><!-- Contenido de chat fuera de línea --></div>
 	<script type="text/javascript">
 		if (!window._laq) { 
@@ -167,11 +170,6 @@
 				document.getElementById('liveagent_button_offline_5731I0000005SIm')
 			);
 		});
-	</script>
-
-	<script type='text/javascript' src='https://c.la1-c2cs-ia2.salesforceliveagent.com/content/g/js/47.0/deployment.js'></script>
-	<script type='text/javascript'>
-		liveagent.init('https://d.la1-c2cs-ia2.salesforceliveagent.com/chat', '5721I0000005VNT', '00DP0000000Dhn3');
-	</script>
+	</script>	
 </body>
 </html>
