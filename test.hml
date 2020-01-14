@@ -1,0 +1,141 @@
+<style type='text/css'>
+	.embeddedServiceHelpButton .helpButton .uiButton {
+		background-color: #005290;
+		font-family: "Arial", sans-serif;
+	}
+	.embeddedServiceHelpButton .helpButton .uiButton:focus {
+		outline: 1px solid #005290;
+	}
+</style>
+
+<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
+<script type='text/javascript'>
+	var initESW = function(gslbBaseURL) {
+		embedded_svc.settings.displayHelpButton = true; //O falso
+		embedded_svc.settings.language = 'es'; //Por ejemplo, introduzca 'en' o 'en-US'
+
+		//embedded_svc.settings.defaultMinimizedText = '...'; //(Toma como valor predeterminado Sesión de chat con un experto)
+		//embedded_svc.settings.disabledMinimizedText = '...'; //(Toma como valor predeterminado Agente sin conexión)
+
+		//embedded_svc.settings.loadingText = ''; //(Toma como valor predeterminado Cargando)
+		//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Establece el dominio para su desarrollo de modo que los visitantes puedan navegar por subdominios durante una sesión de chat)
+
+		// Configuración para Chat
+		//embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
+			// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
+			// Returns a valid button ID.
+		//};
+		//embedded_svc.settings.prepopulatedPrechatFields = {}; //Establece la cumplimentación automática de los campos del formulario previo al chat
+		//embedded_svc.settings.fallbackRouting = []; //Una matriz de identificadores de botones, de usuario o userId_buttonId
+		//embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Toma como valor predeterminado la opción Contacto)
+
+		embedded_svc.settings.extraPrechatFormDetails = [{
+	  			//Valor para setear en el Caso
+				"label": "Empresa",
+	  			"value": "Babycottons",
+	  			"displayToAgent": true
+			}, {
+				//Valor para setear en el Caso
+				"label": "Origin",
+				"value": "Chat",
+				"displayToAgent": true
+			},{
+				/*Valor para buscar Contacto y 
+				relacionarlo al chat*/
+				"label":"Email", 
+				"transcriptFields":["Email__c"]
+			}
+		];
+		
+		embedded_svc.settings.extraPrechatInfo = [
+			//Se setea para que no cree un nuevo Contacto
+			{
+				"entityName": "Contact",
+				"showOnCreate": true,
+				"saveToTranscript": "ContactId",
+				"entityFieldMaps": [{
+					"isExactMatch": false,
+					"fieldName": "FirstName",
+					"doCreate": false,
+					"doFind": false,
+					"label": "First Name"
+				}, {
+					"isExactMatch": false,
+					"fieldName": "LastName",
+					"doCreate": false,
+					"doFind": false,
+					"label": "Last Name"
+				}, {
+					"isExactMatch": false,
+					"fieldName": "Email",
+					"doCreate": false,
+					"doFind": false,
+					"label": "Email"
+				}]
+			},
+			/*Se setea para que cree un nuevo Caso
+			con el Origen y la Empresa cargados*/
+			{
+				"entityName": "Case",
+				"showOnCreate": true,
+				"saveToTranscript": "CaseId",
+				"entityFieldMaps": [{
+					"isExactMatch": false,
+					"fieldName": "Subject",
+					"doCreate": true,
+					"doFind": false,
+					"label": "Subject"
+				}, {
+					"isExactMatch": false,
+					"fieldName": "Status",
+					"doCreate": true,
+					"doFind": false,
+					"label": "Status"
+				}, {
+					"isExactMatch": false,
+					"fieldName": "Origin",
+					"doCreate": true,
+					"doFind": false,
+					"label": "Origin"
+				},{
+					"isExactMatch": false,
+					"fieldName": "Empresa_de_caso__c",
+					"doCreate": true,
+					"doFind": false,
+					"label": "Empresa"
+				}]
+			}
+		];
+
+
+		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
+		embedded_svc.settings.entryFeature = 'LiveAgent';
+
+		embedded_svc.init(
+			'https://rapsodia--devProy.cs4.my.salesforce.com',
+			'https://devproy-rapsodiaarg.cs4.force.com/Babycottons',
+			gslbBaseURL,
+			'00DP0000000Dhn3',
+			'Baby_cottons',
+			{
+				baseLiveAgentContentURL: 'https://c.la1-c2cs-ia2.salesforceliveagent.com/content',
+				deploymentId: '572P0000000005L',
+				buttonId: '573P000000000Fa',
+				baseLiveAgentURL: 'https://d.la1-c2cs-ia2.salesforceliveagent.com/chat',
+				eswLiveAgentDevName: 'EmbeddedServiceLiveAgent_Parent04IP0000000001EMAQ_16abc5be08d',
+				isOfflineSupportEnabled: false
+			}
+		);
+	};
+
+	if (!window.embedded_svc) {
+		var s = document.createElement('script');
+		s.setAttribute('src', 'https://rapsodia--devProy.cs4.my.salesforce.com/embeddedservice/5.0/esw.min.js');
+		s.onload = function() {
+			initESW(null);
+		};
+		document.body.appendChild(s);
+	} else {
+		initESW('https://service.force.com');
+	}
+</script>
